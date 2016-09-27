@@ -13,8 +13,8 @@ When passing a file to it, it will search and download all the entries in the fi
 When passing a string, it will just search for that entry.  
 ------------
 **How does it work?**  
-1) Search for what you prompt on Google
-2) Get the URL from the first result
-3) Pass the found URL to youtube-dl
-4) Download and convert
-5) Done!
+1) Search for what you prompt on Google  
+2) Get the URL from the first result  
+3) Pass the found URL to youtube-dl  
+4) Download and convert  
+5) Done!  

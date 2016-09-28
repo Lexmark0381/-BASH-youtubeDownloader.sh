@@ -11,7 +11,7 @@ else
 				# echo "googler $p youtube -n 1 --np | sed -n 2p >> links.txt"
 				echo "Searching for $p"
 				a=$(googler $p youtube -C --np  | sed -n 2p)
-				if [ $a == "No results." ]; then
+				if [ "$a" == "No results." ] ; then
 					echo "No results found for $p! Continuing.."
 				else
 					echo "Found: $a"
@@ -22,14 +22,14 @@ else
 		fi
 
 		if [ ! -d ./mp3 ]; then
-			echo "no mp3!"
+			echo "no folder mp3!"
 			mkdir ./mp3
-			echo "mp3 created!"
+			echo "folder mp3 created!"
 		fi
 
 		while read p; do
 			# echo "youtube-dl -f bestvideo+bestaudio $p -o ./mp3"
-			youtube-dl --extract-audio --audio-format mp3 -f bestvideo+bestaudio $p -o './mp3/%(title)s.%(ext)s'
+			youtube-dl --extract-audio --audio-format mp3 -f bestvideo+bestaudio $p -o './mp3/%(title)s.%(ext)s' &
 		done < links.txt
 		rm links.txt
 	else
@@ -39,7 +39,7 @@ else
 					echo "No results found for $songs!"
 				else
 					echo "Found: $a"
-					youtube-dl --extract-audio --audio-format mp3 -f bestvideo+bestaudio $a -o './%(title)s.%(ext)s'
+					youtube-dl --extract-audio --audio-format mp3 -f bestvideo+bestaudio $a -o './%(title)s.%(ext)s' 
 				fi
 			fi
 fi

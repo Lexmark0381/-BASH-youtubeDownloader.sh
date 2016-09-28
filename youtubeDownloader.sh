@@ -9,8 +9,8 @@ else
 			while read p; do
 				echo "--------------------------"
 				# echo "googler $p youtube -n 1 --np | sed -n 2p >> links.txt"
-				echo "Searching for $p"
-				a=$(googler $p youtube -C --np  | sed -n 2p)
+				echo "Searching for $p..."
+				a=$(googler $p youtube -C --np --notweak | sed -n 2p)
 				if [ "$a" == "No results." ] ; then
 					echo "No results found for $p! Continuing.."
 				else
@@ -33,9 +33,9 @@ else
 		done < links.txt
 		rm links.txt
 	else
-		echo "Searching for $songs"
+		echo "Searching for $songs..."
 				a=$(googler $songs youtube -C --np  | sed -n 2p)
-				if [ $a == "No results." ]; then
+				if [ "$a" == "No results." ] || [ "$a" == "" ] ; then
 					echo "No results found for $songs!"
 				else
 					echo "Found: $a"
